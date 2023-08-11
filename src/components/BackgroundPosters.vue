@@ -1,0 +1,79 @@
+<template>
+  <Teleport to=".app">
+    <div :class="['preview', { preview_bottom: positionTop }]">
+      <div class="preview__list">
+        <img
+          v-for="i in 100"
+          ref="images"
+          :key="i"
+          class="preview__poster"
+          src="https://movielab.media/img/bca0bee71406025cc98e8735a053a23c.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+  </Teleport>
+</template>
+
+<script>
+export default {
+  props: {
+    positionTop: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  data() {
+    return {
+      posterHeight: null,
+    };
+  },
+  mounted() {
+    this.posterHeight = this.$refs.images[0].offsetHeight;
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@use '@/assets/styles/utils/mixins' as mix;
+@use '@/assets/styles/utils/variables' as vars;
+@use '@/assets/styles/utils/functions' as fn;
+
+.preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  height: 768px;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 40%) 0%, #000 100%);
+    content: '';
+    inset: 0;
+  }
+
+  &_bottom {
+    top: calc(100% - 323px);
+
+    &::before {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 40%) 0%, #000 100%);
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 20px;
+    margin: -70px;
+  }
+
+  &__poster {
+    width: 100%;
+    border-radius: 16px;
+    @include mix.ratio(140, 205);
+  }
+}
+</style>

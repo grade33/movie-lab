@@ -1,0 +1,29 @@
+@use './variables' as vars;
+
+@function overhang() {
+  @return calc((-100vw + vars.$container) / 2);
+}
+
+@function cmin($min, $max) {
+  $bps: (calc(vars.$sm / 1px)), calc(vars.$md / 1px), calc(vars.$lg / 1px), calc(vars.$xl / 1px), calc(vars.$xxl / 1px);
+  $min-bp: calc(vars.$min / 1px);
+
+  @for $i from 1 through length($bps) {
+    $bp: nth($bps, $i);
+    $vw: calc($max / $bp) * 100;
+
+    @if calc($vw / 100) * $min-bp <= $min {
+      @return clamp(#{$min * 1px}, #{calc(round($vw * 100) / 100) * 1vw}, #{$max * 1px});
+    }
+  }
+}
+
+@function cmax($min, $max) {
+  $bp: calc(vars.$xxl / 1px);
+  $min-bp: calc(vars.$min / 1px);
+  $vw: calc($max / $bp) * 100;
+
+  @if calc($vw / 100) * $min-bp <= $min {
+    @return clamp(#{$min * 1px}, #{calc(round($vw * 100) / 100) * 1vw}, #{$max * 1px});
+  }
+}

@@ -1,0 +1,156 @@
+@use './variables' as vars;
+@use './functions' as fn;
+
+@mixin ratio($width, $height) {
+  $aspect-ratio: calc(#{$height} / #{$width});
+
+  aspect-ratio: 1 / $aspect-ratio;
+}
+
+@mixin title-large {
+  font-weight: 600;
+  font-size: 22px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin title-medium {
+  font-weight: 700;
+  font-size: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+@mixin title-small {
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+@mixin label-large {
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+@mixin label-medium {
+  font-weight: 400;
+  font-size: 12px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin label-small {
+  font-weight: 400;
+  font-size: 11px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+@mixin body-large {
+  font-weight: 600;
+  font-size: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+@mixin body-medium {
+  font-weight: 400;
+  font-size: 15px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin body-small {
+  font-weight: 300;
+  font-size: 13px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.23;
+  letter-spacing: 0;
+}
+@mixin title-semi-large {
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin button {
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin title-large-2 {
+  font-weight: 700;
+  font-size: 22px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin web-title-large {
+  font-weight: 800;
+  font-size: 54px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+@mixin web-body-x-large {
+  font-weight: 400;
+  font-size: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+@mixin tv-main-title {
+  font-weight: 700;
+  font-size: 92px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin tv-body-text {
+  font-weight: 400;
+  font-size: 24px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin tv-subtitle {
+  font-weight: 600;
+  font-size: 48px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin tv-button {
+  font-weight: 700;
+  font-size: 24px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin tv-card-title {
+  font-weight: 700;
+  font-size: 32px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin tv-body-small {
+  font-weight: 600;
+  font-size: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+@mixin tv-base-text {
+  font-weight: 400;
+  font-size: 32px;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.33;
+  letter-spacing: 0; 
+}

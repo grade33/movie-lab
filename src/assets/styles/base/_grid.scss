@@ -1,0 +1,102 @@
+@use '../utils/variables' as vars;
+
+// Columns
+// Определение переменных
+$gutter-width: vars.$gutter;
+$breakpoints: (
+  '': 0,
+  'xxl': vars.$xxl,
+  'xl': vars.$xl,
+  'lg': vars.$lg,
+  'md': vars.$md,
+  'sm': vars.$sm,
+);
+
+// Миксины
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.5 * $gutter-width;
+  margin-left: -0.5 * $gutter-width;
+}
+
+@mixin make-col($size, $columns: 12) {
+  flex: 0 0 percentage(calc($size / $columns));
+  max-width: percentage(calc($size / $columns));
+  padding-right: 0.5 * $gutter-width;
+  padding-left: 0.5 * $gutter-width;
+}
+
+@mixin generate-grid($breakpoint-name: '') {
+  .row {
+    @include make-row;
+  }
+
+  .col#{$breakpoint-name} {
+    @include make-col(12);
+  }
+
+  @for $i from 1 through 12 {
+    .col#{$breakpoint-name}-#{$i} {
+      @include make-col($i);
+    }
+  }
+}
+
+// Генерация классов колонок для каждого брейкпоинта
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+  @if $breakpoint-name == '' {
+    @include generate-grid;
+  } @else {
+    @media (max-width: $breakpoint-value) {
+      @include generate-grid('-' + $breakpoint-name);
+    }
+  }
+}
+
+// Gutter
+// Определение переменных
+$gutter-spacers: (
+  0: 0,
+  1: 10px,
+  2: 20px,
+  3: 30px,
+  4: 40px,
+  5: 50px,
+);
+
+@mixin make-gx($spacer) {
+  margin-right: calc(-1 * $spacer / 2);
+  margin-left: calc(-1 * $spacer / 2);
+
+  > * {
+    padding-right: calc($spacer / 2);
+    padding-left: calc($spacer / 2);
+  }
+}
+
+@mixin make-gy($spacer) {
+  margin-top: calc(-1 * $spacer / 2);
+  margin-bottom: calc(-1 * $spacer / 2);
+
+  > * {
+    padding-top: calc($spacer / 2);
+    padding-bottom: calc($spacer / 2);
+  }
+}
+
+// Генерация классов отступов
+@each $spacer, $value in $gutter-spacers {
+  .g-#{$spacer} {
+    @include make-gx($value);
+    @include make-gy($value);
+  }
+
+  .gx-#{$spacer} {
+    @include make-gx($value);
+  }
+
+  .gy-#{$spacer} {
+    @include make-gy($value);
+  }
+}
