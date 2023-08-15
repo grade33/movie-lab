@@ -1,5 +1,5 @@
 <template>
-  <ul class="info">
+  <ul :class="['info', { info_footer: isFooter }]">
     <li class="info__item">
       <a href="#" class="info__link">
         <TelegramIcon class="info__icon" />
@@ -41,6 +41,12 @@ import SupportIcon from '@/components/icons/SupportIcon.vue';
 
 export default {
   components: { TelegramIcon, InstagramIcon, FaqIcon, SupportIcon },
+  props: {
+    isFooter: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
@@ -50,15 +56,37 @@ export default {
 @use '@/assets/styles/utils/functions' as fn;
 
 .info {
+  @include mix.body-large;
+
   display: flex;
   align-items: center;
-  @include mix.body-large;
+
+  &:not(&_footer) {
+    @media (max-width: vars.$lg) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .info {
+        &__item {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &_footer {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    @media (max-width: vars.$md) {
+      justify-content: center;
+    }
+  }
 
   &__link {
     display: flex;
     gap: 12px;
     align-items: center;
-    padding: 12px 16px;
+    padding: 12px 15px;
   }
 
   &__icon {

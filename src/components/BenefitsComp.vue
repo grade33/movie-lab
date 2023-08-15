@@ -631,7 +631,7 @@ export default {};
   &__container {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: fn.cmin(48, 80);
   }
 
   &__title {
@@ -645,15 +645,25 @@ export default {};
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
 
-    &::before {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      left: 0;
-      height: 1px;
-      margin: 0 fn.overhang();
-      background: #303033;
-      content: '';
+    @media (max-width: vars.$lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: vars.$min-lg) {
+      &::before {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        left: 0;
+        height: 1px;
+        margin: 0 fn.overhang();
+        background: #303033;
+        content: '';
+      }
+    }
+
+    @media (max-width: vars.$md) {
+      grid-template-columns: 1fr;
     }
   }
 

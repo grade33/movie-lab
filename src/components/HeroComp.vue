@@ -27,9 +27,16 @@ export default {};
 
   &__title {
     max-width: 586px;
-    margin: 217px auto;
+    margin: fn.cmax(120, 220) auto;
     text-align: center;
     @include mix.web-title-large;
+
+    @media (max-width: vars.$lg) {
+      font-size: 44px;
+    }
+    @media (max-width: vars.$md) {
+      font-size: 36px;
+    }
   }
 }
 </style>

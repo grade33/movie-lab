@@ -17,10 +17,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/utils/mixins' as mix;
+@use '@/assets/styles/utils/variables' as vars;
+@use '@/assets/styles/utils/functions' as fn;
+
 .app {
   position: relative;
   z-index: 1;
+  padding-top: 76px;
   overflow: hidden;
   background: var(--main-00, #000);
+  @media (max-width: vars.$lg) {
+    padding-top: 60px;
+  }
 }
 </style>

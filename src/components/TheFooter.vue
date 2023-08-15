@@ -5,7 +5,7 @@
         <LogoIcon class="footer__logo-icon" />
         <span class="footer__copyright">© 2023</span>
       </RouterLink>
-      <InfoContact />
+      <InfoContact :is-footer="true" />
     </div>
   </footer>
 </template>
@@ -32,15 +32,28 @@ export default {
 
   &__container {
     display: flex;
-    gap: 16px;
+    gap: 16px 150px;
     align-items: center;
+    @media (max-width: vars.$md) {
+      flex-direction: column;
+      align-items: center;
+      max-width: unset;
+      padding: 0;
+    }
   }
 
   &__logo {
     display: flex;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 14px 12px;
     align-items: center;
-    margin-right: auto;
+    @media (min-width: vars.$min-md) {
+      margin-right: auto;
+    }
+
+    @media (max-width: vars.$md) {
+      flex-direction: column;
+    }
 
     &-icon {
       width: 120px;

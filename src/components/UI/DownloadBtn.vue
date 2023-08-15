@@ -1,6 +1,8 @@
 <template>
   <button class="btn" type="button">
-    <slot class="btn__text" name="text">Скачать</slot>
+    <slot class="btn__text" name="text">
+      <span>Скачать</span>
+    </slot>
     <slot class="btn__icon" name="icon">
       <svg
         class="btn__icon"
@@ -41,13 +43,13 @@ export default {};
     padding: 10px;
   }
 
-  &__text {
+  & :deep(span) {
     @media (max-width: vars.$md) {
       display: none;
     }
   }
 
-  &__icon {
+  & :deep(svg) {
     width: 16px;
   }
 }

@@ -24,28 +24,26 @@
           <div class="apps__item apps__item_web">
             <div class="apps__text-block">
               <h2 class="apps__title">Movielab WEB</h2>
-              <DownloadBtn class="apps__download">
+              <DownloadBtn class="apps__d ownload">
                 <template #text>
                   <span>Смотреть</span>
                 </template>
                 <template #icon>
-                  <span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 12L12 4M12 4H6.66667M12 4V9.33333"
-                        stroke="black"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 12L12 4M12 4H6.66667M12 4V9.33333"
+                      stroke="black"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </template>
               </DownloadBtn>
             </div>
@@ -73,13 +71,21 @@ export default {
 
 .apps {
   position: relative;
-  margin-bottom: 120px;
+  margin-bottom: fn.cmin(80,120);
 
   &__list {
     display: flex;
     gap: 32px;
-    max-height: 700px;
     overflow: hidden;
+
+    @media (min-width: vars.$min-xl) {
+      max-height: 700px;
+    }
+
+    @media (max-width: vars.$xl) {
+      flex-direction: column;
+      max-width: unset;
+    }
 
     & > * {
       flex: 1;
@@ -87,53 +93,105 @@ export default {
   }
 
   &__item {
+    display: flex;
     flex-direction: column;
+    padding: 32px;
     overflow: hidden;
     background: var(--main-015, #131314);
     border: 1px solid var(--main-20, #303033);
     border-radius: 32px;
 
-    &_android {
-      .apps {
-        &__text-block {
-          padding: 32px;
-          padding-bottom: 0;
-        }
+    @media (min-width: vars.$min-xl) and (min-width: vars.$min-md) {
+      gap: 50px;
 
-        &__img {
-          &-block {
-            width: 893px;
-            margin-top: 50px;
-            margin-bottom: -22px;
-            margin-left: -91px;
+      &_android {
+        .apps {
+          &__img {
+            &-block {
+              margin: -16px -232px -55px -122px;
+            }
           }
         }
       }
     }
 
-    &_tv {
-      padding: 32px;
-      padding-bottom: 0;
+    @media (max-width: vars.$xl) and (min-width: vars.$min-md) {
+      flex-direction: row;
+      gap: 60px;
+      max-height: 318px;
 
-      .apps {
-        &__img {
-          &-block {
-            width: 100%;
-            margin-top: 50px;
+      &_android {
+        .apps {
+          @media (min-width: vars.$min-lg) {
+            &__text-block {
+              max-width: 300px;
+            }
+          }
+
+          &__img-block {
+            margin: -32px -122px -32px -48px;
+            @media (max-width: vars.$lg) {
+              margin: -74px -190px -44px -44px;
+            }
+          }
+        }
+      }
+
+      &_tv {
+        .apps {
+          &__img-block {
+            margin-right: -12%;
+            @media (max-width: vars.$lg) {
+              margin-right: -25%;
+            }
+          }
+        }
+      }
+
+      &_web {
+        .apps {
+          &__img-block {
+            margin-right: -6%;
+            @media (max-width: vars.$lg) {
+              margin-right: -38%;
+            }
           }
         }
       }
     }
 
-    &_web {
-      padding: 32px;
-      padding-bottom: 0;
+    @media (max-width: vars.$lg) and (min-width: vars.$min-md) {
+      gap: 34px;
+    }
 
-      .apps {
-        &__img {
-          &-block {
-            width: 100%;
-            margin-top: 35px;
+    @media (max-width: vars.$md) {
+      flex-direction: column;
+      gap: 15px;
+      max-height: fn.cmin(220,350);
+      padding: 24px;
+
+      &_android {
+        max-height: 370px;
+
+        .apps {
+          &__img-block {
+            margin: 0 -84px -55px -113px;
+          }
+        }
+      }
+
+      &_tv {
+        .apps {
+          &__img-block {
+            margin-right: -58px;
+          }
+        }
+      }
+
+      &_web {
+        .apps {
+          &__img-block {
+            margin-right: -126px;
           }
         }
       }
@@ -155,10 +213,43 @@ export default {
     gap: 32px;
     align-items: flex-start;
     justify-content: space-between;
+
+    @media (max-width: vars.$xl) and (min-width: vars.$min-md) {
+      flex: none;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      justify-content: unset;
+      max-width: 320px;
+    }
+    @media (max-width: vars.$lg) and (min-width: vars.$min-md) {
+      max-width: 225px;
+    }
+
+    @media (max-width: vars.$md) {
+      gap: 16px;
+      align-items: center;
+    }
   }
 
   &__title {
     @include mix.tv-card-title;
+    @media (max-width: vars.$md) {
+      @include mix.title-large;
+    }
+  }
+
+  &__img {
+    width: 100%;
+
+    &-block {
+      @media (max-width: vars.$xl) {
+        @media (min-width: vars.$min-md) {
+          margin-top: auto;
+          margin-left: auto;
+        }
+      }
+    }
   }
 }
 </style>

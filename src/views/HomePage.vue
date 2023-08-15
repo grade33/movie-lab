@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <BackgroundPosters />
-    <BackgroundPosters :positionTop="false" />
+    <BackgroundPosters :position-top="false" />
     <HeroComp />
     <AppsList />
     <BenefitsComp />
@@ -19,8 +19,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/utils/mixins' as mix;
+@use '@/assets/styles/utils/variables' as vars;
+@use '@/assets/styles/utils/functions' as fn;
+
 .home {
   min-height: 100vh;
-  padding: 76px 0 120px;
+  padding-bottom: fn.cmin(80, 120);
 }
 </style>

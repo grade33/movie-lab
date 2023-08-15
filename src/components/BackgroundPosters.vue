@@ -65,8 +65,8 @@ export default {
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(10,  minmax(82px,140px));
+    gap: fn.cmin(11,20);
     margin: -70px;
   }
 
