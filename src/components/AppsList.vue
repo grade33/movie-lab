@@ -2,7 +2,7 @@
   <section class="apps">
     <div class="apps__container container">
       <div class="apps__list">
-        <div class="apps__item apps__item_android">
+        <a class="apps__item apps__item_android" download :href="adroidUrl">
           <div class="apps__text-block">
             <h2 class="apps__title">Приложение для Android</h2>
             <DownloadBtn class="apps__download" />
@@ -10,9 +10,9 @@
           <div class="apps__img-block">
             <img class="apps__img" src="@/assets/img/apps/android.png" alt="" />
           </div>
-        </div>
+        </a>
         <div class="apps__item-block">
-          <div class="apps__item apps__item_tv">
+          <a class="apps__item apps__item_tv" download :href="tvUrl">
             <div class="apps__text-block">
               <h2 class="apps__title">Приложение для TV</h2>
               <DownloadBtn class="apps__download" />
@@ -20,8 +20,8 @@
             <div class="apps__img-block">
               <img class="apps__img" src="@/assets/img/apps/tv.png" alt="" />
             </div>
-          </div>
-          <div class="apps__item apps__item_web">
+          </a>
+          <a class="apps__item apps__item_web" href="https://mlab.vip/">
             <div class="apps__text-block">
               <h2 class="apps__title">Movielab WEB</h2>
               <DownloadBtn class="apps__d ownload">
@@ -50,7 +50,7 @@
             <div class="apps__img-block">
               <img class="apps__img" src="@/assets/img/apps/web.png" alt="" />
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -59,8 +59,41 @@
 
 <script>
 import DownloadBtn from './UI/DownloadBtn.vue';
+import axios from 'axios';
+
 export default {
   components: { DownloadBtn },
+  data() {
+    return {
+      adroidUrl: null,
+      tvUrl: null,
+    };
+  },
+  async created() {
+    this.adroidUrl = await this.getUrl(
+      'https://api.movielab.pro/api/v3/appversion?type=mobile'
+    );
+    this.tvUrl = await this.getUrl(
+      'https://api.movielab.pro/api/v3/appversion?type=tv'
+    );
+  },
+  methods: {
+    async getUrl(path) {
+      try {
+        const response = await axios.get(path);
+
+        if (response.data && response.data.url) {
+          return response.data.url;
+        } else {
+          console.log('Свойство url не найдено в ответе.');
+          return null;
+        }
+      } catch (error) {
+        console.error('Произошла ошибка при выполнении запроса:', error);
+        return null;
+      }
+    },
+  },
 };
 </script>
 
@@ -71,7 +104,6 @@ export default {
 
 .apps {
   position: relative;
-  margin-bottom: fn.cmin(80,120);
 
   &__list {
     display: flex;
@@ -99,7 +131,7 @@ export default {
     overflow: hidden;
     background: var(--main-015, #131314);
     border: 1px solid var(--main-20, #303033);
-    border-radius: 32px;
+    border-radius: fn.cmin(16, 32);
 
     @media (min-width: vars.$min-xl) and (min-width: vars.$min-md) {
       gap: 50px;
@@ -167,7 +199,7 @@ export default {
     @media (max-width: vars.$md) {
       flex-direction: column;
       gap: 15px;
-      max-height: fn.cmin(220,350);
+      max-height: fn.cmin(220, 350);
       padding: 24px;
 
       &_android {

@@ -1,6 +1,6 @@
 // Min Width
 $min-xxl: 1440px;
-$min-xl: 1440px;
+$min-xl: 1200px;
 $min-lg: 1024px;
 $min-md: 768px;
 $min-sm: 366px;
@@ -21,7 +21,9 @@ $gutter: 30px;
   --container: 1240px;
   --padding: 16px;
 
-  
+  @media (max-width: $xxl) {
+    --container: 1163px;
+  }
 }
 
 $container: var(--container);

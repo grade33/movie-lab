@@ -59,11 +59,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Большой выбор контента </strong>
-          <p class="benefits__desc">
-            Movielabпредлагает широкий выбор видеоконтента различных жанров, от
-            документальных фильмов до боевиков и анимации.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Большой выбор контента </strong>
+            <p class="benefits__desc"> Movielabпредлагает широкий выбор видеоконтента различных жанров, от документальных фильмов до боевиков и анимации. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -99,12 +98,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Mobile, Web & TV </strong>
-          <p class="benefits__desc">
-            Приложение доступно на 3-х платформах: Android, Smart TV и
-            web-версия. Смотрите ваши любимые фильмы и сериалы где угодно и
-            когда угодно!
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Mobile, Web & TV </strong>
+            <p class="benefits__desc"> Приложение доступно на 3-х платформах: Android, Smart TV и web-версия. Смотрите ваши любимые фильмы и сериалы где угодно и когда угодно! </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -123,11 +120,10 @@
               stroke-linejoin="round"
             />
           </svg>
-          <strong class="benefits__name"> Поддержка Chromecast </strong>
-          <p class="benefits__desc">
-            Поддержка технологии Chromecast позволяет транслировать контент на
-            большие экраны с помощью соответствующих устройств.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Поддержка Chromecast </strong>
+            <p class="benefits__desc"> Поддержка технологии Chromecast позволяет транслировать контент на большие экраны с помощью соответствующих устройств. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -163,11 +159,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Трансляции и матчи </strong>
-          <p class="benefits__desc">
-            Каждый день вы можете смотреть свои любимые спортивные трансляции на
-            Movielab, а так же ставить уведомления на предстоящие.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Трансляции и матчи </strong>
+            <p class="benefits__desc"> Каждый день вы можете смотреть свои любимые спортивные трансляции на Movielab, а так же ставить уведомления на предстоящие. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -216,14 +211,12 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name">
-            HD качество и множество озвучек
-          </strong>
-          <p class="benefits__desc">
-            Видео на Movielab доступны в высоком разрешении. Кроме того, для
-            большинства видео доступно несколько вариантов озвучки, что
-            позволяет выбрать наиболее приемлемый для вас.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name">
+              HD качество и множество озвучек
+            </strong>
+            <p class="benefits__desc"> Видео на Movielab доступны в высоком разрешении. Кроме того, для большинства видео доступно несколько вариантов озвучки, что позволяет выбрать наиболее приемлемый для вас. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -259,11 +252,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Удобный интерфейс </strong>
-          <p class="benefits__desc">
-            Интуитивно понятный интерфейс и простота навигации делают Мувилаб
-            максимально удобным для пользователей
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Удобный интерфейс </strong>
+            <p class="benefits__desc"> Интуитивно понятный интерфейс и простота навигации делают Мувилаб максимально удобным для пользователей </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -299,13 +291,12 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name">
-            Ежедневное обновление контента
-          </strong>
-          <p class="benefits__desc">
-            Команда Movielab регулярно обновляет контент, добавляя новые видео
-            каждый день. Вы всегда будете в курсе последних трендов
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name">
+              Ежедневное обновление контента
+            </strong>
+            <p class="benefits__desc"> Команда Movielab регулярно обновляет контент, добавляя новые видео каждый день. Вы всегда будете в курсе последних трендов </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -341,11 +332,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Активное сообщество </strong>
-          <p class="benefits__desc">
-            Обсуждение видео, обратная связь, а также общение и коммуникация с
-            единомышленниками.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Активное сообщество </strong>
+            <p class="benefits__desc"> Обсуждение видео, обратная связь, а также общение и коммуникация с единомышленниками. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -396,13 +386,12 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name">
-            Персонализированные рекомендации
-          </strong>
-          <p class="benefits__desc">
-            Movielab предлагает персонализированные рекомендации, основанные на
-            ваших предпочтениях и просмотренном контенте.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name">
+              Персонализированные рекомендации
+            </strong>
+            <p class="benefits__desc"> Movielab предлагает персонализированные рекомендации, основанные на ваших предпочтениях и просмотренном контенте. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -439,11 +428,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Отсутствие подписки </strong>
-          <p class="benefits__desc">
-            Использование Movielab является бесплатным, что делает его доступным
-            для широкого круга пользователей.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Отсутствие подписки </strong>
+            <p class="benefits__desc"> Использование Movielab является бесплатным, что делает его доступным для широкого круга пользователей. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -545,11 +533,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Создание коллекций </strong>
-          <p class="benefits__desc">
-            Вы можете создавать свои собственные коллекции видео по интересам.
-            Это поможет вам быстрее и легче находить нужный контент.
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Создание коллекций </strong>
+            <p class="benefits__desc"> Вы можете создавать свои собственные коллекции видео по интересам. Это поможет вам быстрее и легче находить нужный контент. </p>
+          </div>
         </li>
         <li class="benefits__item">
           <svg
@@ -604,12 +591,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <strong class="benefits__name"> Закладки и уведомления </strong>
-          <p class="benefits__desc">
-            Вы можете подписаться на уведомления о новых релизах, премьерах и
-            обновлениях контента, а также добавлять фильмы и сериалы в закладки
-            и возвращаться к ним позже
-          </p>
+          <div class="benefits__text-block">
+            <strong class="benefits__name"> Закладки и уведомления </strong>
+            <p class="benefits__desc"> Вы можете подписаться на уведомления о новых релизах, премьерах и обновлениях контента, а также добавлять фильмы и сериалы в закладки и возвращаться к ним позже </p>
+          </div>
         </li>
       </ul>
     </div>
@@ -671,6 +656,12 @@ export default {};
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   &__name {

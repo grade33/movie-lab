@@ -35,12 +35,27 @@ export default {};
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  padding: 10px 20px 10px 24px;
+  padding: 9px 19px 9px 23px;
   color: var(--main-00, #000);
   background: var(--main-titanium-yellow, #f6c516);
+  border: 1px solid var(--main-titanium-yellow, #f6c516);
   border-radius: 12px;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
   @media (max-width: vars.$md) {
     padding: 10px;
+  }
+
+  &:hover {
+    background: #dbb014;
+    border-color: #dbb014;
+  }
+
+  &:focus-visible,
+  &:active {
+    background: #dbb014;
+    border-color: var(--main-100, #fff);
   }
 
   & :deep(span) {

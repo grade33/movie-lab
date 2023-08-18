@@ -1,31 +1,31 @@
 <template>
   <ul :class="['info', { info_footer: isFooter }]">
     <li class="info__item">
-      <a href="#" class="info__link">
+      <a class="info__link" href="https://t.me/Movie_Lab" target="_blank">
         <TelegramIcon class="info__icon" />
         <span>Telegram</span>
       </a>
     </li>
     <li class="info__item">
-      <a href="#" class="info__link">
+      <a class="info__link" href="https://t.me/movielabtv_bot" target="_blank">
         <TelegramIcon class="info__icon" />
         <span>Бот</span>
       </a>
     </li>
     <li class="info__item">
-      <a href="#" class="info__link">
+      <a class="info__link" href="https://www.instagram.com/movielab.official/" target="_blank">
         <InstagramIcon class="info__icon" />
         <span>Instagram</span>
       </a>
     </li>
     <li class="info__item">
-      <a href="#" class="info__link">
+      <a class="info__link" href="https://help.movielab.media/hc/3371735671" target="_blank">
         <FaqIcon class="info__icon" />
         <span>FAQ</span>
       </a>
     </li>
     <li class="info__item">
-      <a href="#" class="info__link">
+      <a class="info__link" href="mailto:info@movielab.app" target="_blank">
         <SupportIcon class="info__icon" />
         <span>Поддержка</span>
       </a>
@@ -60,6 +60,7 @@ export default {
 
   display: flex;
   align-items: center;
+  color: var(--main-100, #fff);
 
   &:not(&_footer) {
     @media (max-width: vars.$lg) {
@@ -87,6 +88,13 @@ export default {
     gap: 12px;
     align-items: center;
     padding: 12px 15px;
+    transition: color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: darken(#fff, 40%);
+    }
   }
 
   &__icon {

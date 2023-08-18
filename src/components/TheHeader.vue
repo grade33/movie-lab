@@ -1,6 +1,6 @@
 <template>
   <header :class="['header', { header_open: isMenuOpen }]">
-    <div class="container header__container">
+    <div class="header__container">
       <div class="header__content">
         <RouterLink to="#" class="header__logo">
           <LogoIcon class="header__logo-icon" />
@@ -60,9 +60,7 @@ export default {
   right: 0;
   left: 0;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  height: 76px;
+  padding: 0 fn.cmin(16, 60);
   border-bottom: 1px solid #494949;
 
   &::before {
@@ -74,14 +72,11 @@ export default {
     inset: 0;
   }
 
-  @media (max-width: vars.$lg) {
-    height: 60px;
-  }
-
   &__container {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    width: 100%;
   }
 
   &__content {
@@ -90,6 +85,10 @@ export default {
     display: flex;
     gap: 16px;
     align-items: center;
+    height: 76px;
+    @media (max-width: vars.$lg) {
+      height: 60px;
+    }
   }
 
   &__logo {
@@ -180,7 +179,7 @@ export default {
     height: calc(100vh);
     padding-top: 60px;
     overflow: auto;
-    background: rgba(vars.$main-00, 10%);
+    background: rgba(vars.$main-00, 50%);
     backdrop-filter: blur(8px);
   }
 }
