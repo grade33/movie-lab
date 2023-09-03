@@ -3,39 +3,41 @@
     <div class="actual__container container">
       <h2 class="actual__title">Актуальные обновления</h2>
       <ul class="actual__list">
-        <li v-for="n in 6" :key="n" class="actual__item">
+        <li class="actual__item">
           <div class="actual__left">
-            <h3 class="actual__name">ОБНОВЛЕНИЕ ТВ</h3>
-            <p class="actual__desc">
-              - технические работы;
-              <br />
-              - исправление ошибок в работе приложения.
-            </p>
-            <div class="actual__bottom">
-              <div class="actual__info">
-                <span class="actual__info-item actual__info-item_update">
-                  Обновление
-                </span>
-                <span class="actual__info-item">TV</span>
-              </div>
-              <span class="actual__date">07.06.2023</span>
-              <a class="actual__download actual__download_2" href="#" download>
-                Скачать
-                <span class="actual__download_strong">TV</span>
-                <DownloadIcon class="actual__download-icon" />
-              </a>
+            <div class="actual__top">
+              <h3 class="actual__name">Обновление TV версии</h3>
+              <span class="actual__text">
+                {{ mobileData.whats_new }}
+              </span>
             </div>
-          </div>
-          <div class="actual__right">
-            <a class="actual__download actual__download_1" href="" download>
+            <a class="actual__download" :href="mobileData.url" download>
               Скачать
               <span class="actual__download_strong">TV</span>
               <DownloadIcon class="actual__download-icon" />
             </a>
-            <div class="actual__poster">
-              <LogoIcon class="actual__poster-icon" />
-            </div>
           </div>
+          <span class="actual__date">
+            {{ formattedDate(mobileData.created_at) }}
+          </span>
+        </li>
+        <li class="actual__item">
+          <div class="actual__left">
+            <div class="actual__top">
+              <h3 class="actual__name">Обновление TV версии</h3>
+              <span class="actual__text">
+                {{ tvData.whats_new }}
+              </span>
+            </div>
+            <a class="actual__download" :href="tvData.url" download>
+              Скачать
+              <span class="actual__download_strong">TV</span>
+              <DownloadIcon class="actual__download-icon" />
+            </a>
+          </div>
+          <span class="actual__date">
+            {{ formattedDate(tvData.created_at) }}
+          </span>
         </li>
       </ul>
     </div>
@@ -43,10 +45,54 @@
 </template>
 
 <script>
+import axios from 'axios';
 import DownloadIcon from './icons/DownloadIcon.vue';
-import LogoIcon from './icons/LogoIcon.vue';
 
-export default { components: { DownloadIcon, LogoIcon } };
+export default {
+  components: { DownloadIcon },
+  data() {
+    return {
+      mobileData: {},
+      tvData: {},
+    };
+  },
+  async mounted() {
+    this.mobileData = await this.getItemInfo(
+      'http://5.45.71.134:8000/api/v1/app-version?version_type=mobile'
+    );
+    this.tvData = await this.getItemInfo(
+      'http://5.45.71.134:8000/api/v1/app-version?version_type=tv'
+    );
+  },
+  methods: {
+    async getItemInfo(path) {
+      try {
+        const response = await axios.get(path);
+        if (response.data && response.data.result) {
+          return response.data.result;
+        } else {
+          console.log('Свойство results не найдено в ответе.');
+          return [];
+        }
+      } catch (error) {
+        console.error('Произошла ошибка при выполнении запроса:', error);
+        if (error.response) {
+          console.error('Ошибка от сервера:', error.response.data);
+        }
+        return [];
+      }
+    },
+
+    formattedDate(dateStr) {
+      const dateObj = new Date(dateStr);
+      const day = dateObj.getDate().toString().padStart(2, '0');
+      const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+      const year = dateObj.getFullYear();
+
+      return `${day}.${month}.${year}`;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -104,7 +150,13 @@ export default { components: { DownloadIcon, LogoIcon } };
   &__left {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    gap: 8px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   &__name {
@@ -117,8 +169,9 @@ export default { components: { DownloadIcon, LogoIcon } };
     }
   }
 
-  &__desc {
+  &__text {
     margin-bottom: 8px;
+    white-space: pre-line;
     @include mix.body-medium;
 
     @media (max-width: vars.$md) {
@@ -126,46 +179,11 @@ export default { components: { DownloadIcon, LogoIcon } };
     }
   }
 
-  &__bottom {
+  &__item-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    @include mix.body-small;
-  }
-
-  &__info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    align-items: center;
-
-    &-item {
-      @include mix.body-small;
-
-      padding: 2px 6px;
-      color: var(--main-100, #fff);
-      background: var(--opacity-20, rgba(48, 48, 51, 60%));
-      border-radius: 12px;
-      backdrop-filter: blur(1px);
-
-      &_update {
-        color: var(--main-00, #000);
-        background: var(--main-titanium-yellow, #f6c516);
-      }
-    }
-  }
-
-  &__right {
-    display: flex;
-    flex: none;
-    gap: 12px;
-    align-items: center;
-    height: 100%;
-
-    @media (max-width: vars.$lg) {
-      flex-direction: column;
-    }
+    flex-direction: column;
+    padding-left: 20px;
+    list-style-type: initial;
   }
 
   &__download {
@@ -180,23 +198,6 @@ export default { components: { DownloadIcon, LogoIcon } };
       order: 3;
       padding: 4px 8px;
       @include mix.body-small;
-
-      @media (min-width: vars.$min-lg) {
-        &_1 {
-          display: none;
-        }
-      }
-    }
-
-    &_2 {
-      margin-left: auto;
-      @media (min-width: vars.$min-xl) {
-        display: none;
-      }
-
-      @media (max-width: vars.$lg) {
-        display: none;
-      }
     }
 
     &_strong {
@@ -209,33 +210,9 @@ export default { components: { DownloadIcon, LogoIcon } };
     }
   }
 
-  &__poster {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 126px;
-    padding: 0 10px;
-    background: var(--main-10, #1b1b1f);
-    border-radius: 12px;
-    @include mix.ratio(86, 126);
-
-    @media (max-width: vars.$md) {
-      height: 116px;
-    }
-
-    &-icon {
-      position: relative;
-      z-index: -1;
-      width: 100%;
-    }
-
-    &-img {
-      position: relative;
-      z-index: 2;
-      border-radius: 12px;
-    }
+  &__date {
+    color: var(--main-80, #c5c6ca);
+    @include mix.body-small;
   }
 }
 </style>

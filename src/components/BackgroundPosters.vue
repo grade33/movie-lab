@@ -3,11 +3,11 @@
     <div :class="['preview', { preview_bottom: positionTop }]">
       <div class="preview__list">
         <img
-          v-for="i in 100"
+          v-for="i in postersList"
           ref="images"
           :key="i"
           class="preview__poster"
-          src="https://movielab.media/img/bca0bee71406025cc98e8735a053a23c.jpg"
+          :src="i"
           alt=""
         />
       </div>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   props: {
     positionTop: {
@@ -26,10 +28,32 @@ export default {
   data() {
     return {
       posterHeight: null,
+      postersList: [],
     };
   },
-  mounted() {
+  async mounted() {
+    this.postersList = await this.getPostersImgList();
+
     this.posterHeight = this.$refs.images[0].offsetHeight;
+  },
+  methods: {
+    async getPostersImgList() {
+      try {
+        const response = await axios.get(
+          'http://5.45.71.134:8000/api/v1/catalog/posters'
+        );
+
+        if (response.data && response.data.results) {
+          return response.data.results;
+        } else {
+          console.log('Свойство results не найдено в ответе.');
+          return [];
+        }
+      } catch (error) {
+        console.error('Произошла ошибка при выполнении запроса:', error);
+        return [];
+      }
+    },
   },
 };
 </script>
