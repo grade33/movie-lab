@@ -40,7 +40,7 @@ export default {
     async getPostersImgList() {
       try {
         const response = await axios.get(
-          'http://5.45.71.134:8000/api/v1/catalog/posters'
+          'https://api.movielab.media/api/v1/catalog/posters'
         );
 
         if (response.data && response.data.results) {

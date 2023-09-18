@@ -58,10 +58,10 @@ export default {
   },
   async mounted() {
     this.mobileData = await this.getItemInfo(
-      'http://5.45.71.134:8000/api/v1/app-version?version_type=mobile'
+      'https://api.movielab.media/api/v1/app-version?version_type=mobile'
     );
     this.tvData = await this.getItemInfo(
-      'http://5.45.71.134:8000/api/v1/app-version?version_type=tv'
+      'https://api.movielab.media/api/v1/app-version?version_type=tv'
     );
   },
   methods: {
