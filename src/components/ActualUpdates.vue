@@ -6,13 +6,13 @@
         <li class="actual__item">
           <div class="actual__left">
             <div class="actual__top">
-              <h3 class="actual__name">Обновление TV версии</h3>
+              <h3 class="actual__name">Обновление мобильной версии</h3>
               <span class="actual__text">
                 {{ mobileData.whats_new }}
               </span>
             </div>
             <a class="actual__download" :href="mobileData.url" download>
-              Скачать
+              Скачать мобильную версию
               <span class="actual__download_strong">TV</span>
               <DownloadIcon class="actual__download-icon" />
             </a>

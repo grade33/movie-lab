@@ -2,7 +2,7 @@
   <section class="apps">
     <div class="apps__container container">
       <div class="apps__list">
-        <a class="apps__item apps__item_android" download :href="adroidUrl">
+        <a class="apps__item apps__item_android" download :href="mobileUrl">
           <div class="apps__text-block">
             <h2 class="apps__title">Приложение для Android</h2>
             <DownloadBtn class="apps__download" />
@@ -21,7 +21,11 @@
               <img class="apps__img" src="@/assets/img/apps/tv.png" alt="" />
             </div>
           </a>
-          <a class="apps__item apps__item_web" href="https://mlab.vip/">
+          <a
+            class="apps__item apps__item_web"
+            href="https://mlab.vip/"
+            target="_blank"
+          >
             <div class="apps__text-block">
               <h2 class="apps__title">Movielab WEB</h2>
               <DownloadBtn class="apps__d ownload">
@@ -65,12 +69,12 @@ export default {
   components: { DownloadBtn },
   data() {
     return {
-      adroidUrl: null,
+      mobileUrl: null,
       tvUrl: null,
     };
   },
   async created() {
-    this.adroidUrl = await this.getUrl(
+    this.mobileUrl = await this.getUrl(
       'https://api.movielab.pro/api/v3/appversion?type=mobile'
     );
     this.tvUrl = await this.getUrl(

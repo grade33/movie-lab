@@ -34,7 +34,9 @@ export default {
   async mounted() {
     this.postersList = await this.getPostersImgList();
 
-    this.posterHeight = this.$refs.images[0].offsetHeight;
+    this.$nextTick(() => {
+      this.posterHeight = this.$refs.images[0].offsetHeight;
+    })
   },
   methods: {
     async getPostersImgList() {
