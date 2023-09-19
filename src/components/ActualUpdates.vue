@@ -13,7 +13,6 @@
             </div>
             <a class="actual__download" :href="mobileData.url" download>
               Скачать мобильную версию
-              <span class="actual__download_strong">TV</span>
               <DownloadIcon class="actual__download-icon" />
             </a>
           </div>
@@ -30,8 +29,7 @@
               </span>
             </div>
             <a class="actual__download" :href="tvData.url" download>
-              Скачать
-              <span class="actual__download_strong">TV</span>
+              Скачать TV версию
               <DownloadIcon class="actual__download-icon" />
             </a>
           </div>
