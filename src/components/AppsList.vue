@@ -75,10 +75,10 @@ export default {
   },
   async created() {
     this.mobileUrl = await this.getUrl(
-      'https://api.movielab.pro/api/v3/appversion?type=mobile'
+      'https://api.movielab.media/api/v1/app-version?version_type=mobile'
     );
     this.tvUrl = await this.getUrl(
-      'https://api.movielab.pro/api/v3/appversion?type=tv'
+      'https://api.movielab.media/api/v1/app-version?version_type=tv'
     );
   },
   methods: {
