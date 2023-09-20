@@ -2,7 +2,7 @@
   <section class="apps">
     <div class="apps__container container">
       <div class="apps__list">
-        <a class="apps__item apps__item_android" download :href="mobileUrl">
+        <a class="apps__item apps__item_android" :href="mobileUrl">
           <div class="apps__text-block">
             <h2 class="apps__title">Приложение для Android</h2>
             <DownloadBtn class="apps__download" />
@@ -12,7 +12,7 @@
           </div>
         </a>
         <div class="apps__item-block">
-          <a class="apps__item apps__item_tv" download :href="tvUrl">
+          <a class="apps__item apps__item_tv" :href="tvUrl">
             <div class="apps__text-block">
               <h2 class="apps__title">Приложение для TV</h2>
               <DownloadBtn class="apps__download" />
