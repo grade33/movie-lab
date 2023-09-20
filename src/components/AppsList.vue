@@ -86,8 +86,8 @@ export default {
       try {
         const response = await axios.get(path);
 
-        if (response.data && response.data.url) {
-          return response.data.url;
+        if (response.data && response.data.result.url) {
+          return response.data.result.url;
         } else {
           console.log('Свойство url не найдено в ответе.');
           return null;
