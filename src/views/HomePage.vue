@@ -15,6 +15,10 @@ import HeroComp from '@/components/HeroComp.vue';
 import AppsList from '@/components/AppsList.vue';
 import BenefitsComp from '../components/BenefitsComp.vue';
 import ActualUpdates from '../components/ActualUpdates.vue';
+
+import { mapActions } from 'pinia';
+import { useDataStore } from '../stores/data';
+
 export default {
   components: {
     BackgroundPosters,
@@ -22,6 +26,12 @@ export default {
     AppsList,
     BenefitsComp,
     ActualUpdates,
+  },
+  mounted() {
+    this.getPostersImgList();
+  },
+  methods: {
+    ...mapActions(useDataStore, ['getPostersImgList']),
   },
 };
 </script>
