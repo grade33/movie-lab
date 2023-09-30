@@ -8,7 +8,17 @@
             <DownloadBtn class="apps__download" />
           </div>
           <div class="apps__img-block">
-            <img class="apps__img" src="@/assets/img/apps/android.png" alt="" />
+            <picture class="apps__img">
+              <source
+                srcset="@/assets/img/apps/android.webp"
+                type="image/webp"
+              />
+              <img
+                class="apps__img"
+                src="@/assets/img/apps/android.png"
+                alt=""
+              />
+            </picture>
           </div>
         </a>
         <div class="apps__item-block">
@@ -18,7 +28,10 @@
               <DownloadBtn class="apps__download" />
             </div>
             <div class="apps__img-block">
-              <img class="apps__img" src="@/assets/img/apps/tv.png" alt="" />
+              <picture class="apps__img">
+                <source srcset="@/assets/img/apps/tv.webp" type="image/webp" />
+                <img class="apps__img" src="@/assets/img/apps/tv.png" alt="" />
+              </picture>
             </div>
           </a>
           <a
@@ -52,7 +65,10 @@
               </DownloadBtn>
             </div>
             <div class="apps__img-block">
-              <img class="apps__img" src="@/assets/img/apps/web.png" alt="" />
+              <picture class="apps__img">
+                <source srcset="@/assets/img/apps/web.webp" type="image/webp" />
+                <img class="apps__img" src="@/assets/img/apps/web.png" alt="" />
+              </picture>
             </div>
           </a>
         </div>
