@@ -28,10 +28,16 @@ export default {
     ActualUpdates,
   },
   mounted() {
-    this.getPostersImgList();
+    this.setPostersImgList();
+    this.setMobileData();
+    this.setTvData();
   },
   methods: {
-    ...mapActions(useDataStore, ['getPostersImgList']),
+    ...mapActions(useDataStore, [
+      'setPostersImgList',
+      'setMobileData',
+      'setTvData',
+    ]),
   },
 };
 </script>

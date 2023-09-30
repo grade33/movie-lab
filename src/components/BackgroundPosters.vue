@@ -1,4 +1,4 @@
-<template>
+<template v-if="postersList">
   <Teleport to=".app">
     <div :class="['preview', { preview_bottom: positionTop }]">
       <div class="preview__list">
@@ -34,17 +34,12 @@ export default {
   computed: {
     ...mapState(useDataStore, ['postersList']),
   },
-  watch: {
-    postersList: {
-      immediate: true,
-      handler(newValue) {
-        if (newValue.length) {
-          this.$nextTick(() => {
-            this.posterHeight = this.$refs.images[0].offsetHeight;
-          });
-        }
-      },
-    },
+  mounted() {
+    if (this.postersList && this.postersList.length) {
+      this.$nextTick(() => {
+        this.posterHeight = this.$refs.images[0].offsetHeight;
+      });
+    }
   },
 };
 </script>

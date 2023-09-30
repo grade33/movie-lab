@@ -1,8 +1,8 @@
 <template>
-  <section class="apps">
+  <section v-if="mobileData && tvData" class="apps">
     <div class="apps__container container">
       <div class="apps__list">
-        <a class="apps__item apps__item_android" :href="mobileUrl">
+        <a class="apps__item apps__item_android" :href="mobileData.url">
           <div class="apps__text-block">
             <h2 class="apps__title">Приложение для Android</h2>
             <DownloadBtn class="apps__download" />
@@ -12,7 +12,7 @@
           </div>
         </a>
         <div class="apps__item-block">
-          <a class="apps__item apps__item_tv" :href="tvUrl">
+          <a class="apps__item apps__item_tv" :href="tvData.url">
             <div class="apps__text-block">
               <h2 class="apps__title">Приложение для TV</h2>
               <DownloadBtn class="apps__download" />
@@ -63,40 +63,13 @@
 
 <script>
 import DownloadBtn from './UI/DownloadBtn.vue';
-import axios from 'axios';
+import { mapState } from 'pinia';
+import { useDataStore } from '@/stores/data';
 
 export default {
   components: { DownloadBtn },
-  data() {
-    return {
-      mobileUrl: null,
-      tvUrl: null,
-    };
-  },
-  async created() {
-    this.mobileUrl = await this.getUrl(
-      'https://api.movielab.media/api/v1/app-version?version_type=mobile'
-    );
-    this.tvUrl = await this.getUrl(
-      'https://api.movielab.media/api/v1/app-version?version_type=tv'
-    );
-  },
-  methods: {
-    async getUrl(path) {
-      try {
-        const response = await axios.get(path);
-
-        if (response.data && response.data.result.url) {
-          return response.data.result.url;
-        } else {
-          console.log('Свойство url не найдено в ответе.');
-          return null;
-        }
-      } catch (error) {
-        console.error('Произошла ошибка при выполнении запроса:', error);
-        return null;
-      }
-    },
+  computed: {
+    ...mapState(useDataStore, ['mobileData', 'tvData']),
   },
 };
 </script>

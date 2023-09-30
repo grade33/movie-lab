@@ -1,5 +1,5 @@
 <template>
-  <section class="actual">
+  <section v-if="mobileData && tvData" class="actual">
     <div class="actual__container container">
       <h2 class="actual__title">Актуальные обновления</h2>
       <ul class="actual__list">
@@ -43,44 +43,17 @@
 </template>
 
 <script>
-import axios from 'axios';
 import DownloadIcon from './icons/DownloadIcon.vue';
+
+import { mapState } from 'pinia';
+import { useDataStore } from '@/stores/data';
 
 export default {
   components: { DownloadIcon },
-  data() {
-    return {
-      mobileData: {},
-      tvData: {},
-    };
-  },
-  async mounted() {
-    this.mobileData = await this.getItemInfo(
-      'https://api.movielab.media/api/v1/app-version?version_type=mobile'
-    );
-    this.tvData = await this.getItemInfo(
-      'https://api.movielab.media/api/v1/app-version?version_type=tv'
-    );
+  computed: {
+    ...mapState(useDataStore, ['mobileData', 'tvData']),
   },
   methods: {
-    async getItemInfo(path) {
-      try {
-        const response = await axios.get(path);
-        if (response.data && response.data.result) {
-          return response.data.result;
-        } else {
-          console.log('Свойство results не найдено в ответе.');
-          return [];
-        }
-      } catch (error) {
-        console.error('Произошла ошибка при выполнении запроса:', error);
-        if (error.response) {
-          console.error('Ошибка от сервера:', error.response.data);
-        }
-        return [];
-      }
-    },
-
     formattedDate(dateStr) {
       const dateObj = new Date(dateStr);
       const day = dateObj.getDate().toString().padStart(2, '0');
